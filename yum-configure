@@ -1,0 +1,32 @@
+/run/media/root/RHEL-8-4-0-BaseOS-x86_64
+
+
+ mount -o loop /dev/sr1 /mnt
+  
+   61  cd /mnt
+   
+   63  mkdir /rhel8dvd
+   
+   65  cp -avr * /rhel8dvd/
+   69  cd /etc/yum.repos.d/
+   75  vim rhelnew.repo
+   76  vim /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+   
+  106  yum install httpd
+
+
+
+[dvd1]
+name=BaseOS
+baseurl=file:///rhel8dvd/BaseOS
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+
+
+[dvd2]
+name=AppStream
+baseurl=file:///rhel8dvd/AppStream
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
