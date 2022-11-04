@@ -1,0 +1,20 @@
+mkdir /dvd
+mount /dvd/cdrom /dvd
+mkdir /rheldvd
+cd /dvd
+cp -avr * /rheldvd
+vim /etc/yum.repos.d/
+vim newrepo.repo
+
+
+[dvd1]
+name='BaseOS'
+baseurl=file:///rheldvd/BaseOS
+gpgcheck=0
+
+[dvd2]
+name='AppStream'
+baseurl=file:///rheldvd/AppStream
+gpgcheck=0
+
+echo "mount /dev/cdrom /rheldvd" >> ~/.bashrc
